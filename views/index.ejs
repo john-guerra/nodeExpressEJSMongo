@@ -46,7 +46,7 @@
 
           <ul id="grades">
             <% grades.forEach( (grade) => { %>
-            <li><%= grade.name %> : <%= grade.grade %></li>
+            <li><%= grade.name %> : <%= grade.grade %> <a class="btn btn-info" href=<%- "/grade/" + grade._id %>> Details </a></li>
             <% }) %>
           </ul>
         </div>

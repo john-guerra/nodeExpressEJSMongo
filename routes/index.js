@@ -49,4 +49,17 @@ router.post("/grades/create", (req, res) => {
   mu.grades.insert(grade).then(res.redirect("/"));
 });
 
+// Server side rendering one grade
+router.get("/grade/:id", (req, res) => {
+  console.log("grade/id params", req.params);
+
+  mu.grades
+    .findOneByID(req.params.id)
+    .then(grade => {
+      console.log("grade", grade);
+      return grade;
+    })
+    .then(grade => res.render("grade_details", { grade }));
+});
+
 module.exports = router;

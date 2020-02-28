@@ -1,4 +1,5 @@
 const MongoClient = require("mongodb").MongoClient;
+const ObjectID = require("mongodb").ObjectID;
 
 function MongoUtils() {
   const mu = {},
@@ -27,6 +28,16 @@ function MongoUtils() {
         .limit(20)
         .sort({ timestamp: -1 })
         .toArray()
+        .finally(() => client.close());
+    });
+
+  mu.grades.findOneByID = id =>
+    mu.connect().then(client => {
+      const gradesCol = client.db(dbName).collection(colName);
+
+      // when searching by id we need to create an ObjectID
+      return gradesCol
+        .findOne({ _id: new ObjectID(id) })
         .finally(() => client.close());
     });
 
