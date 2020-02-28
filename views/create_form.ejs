@@ -1,0 +1,33 @@
+<form action="/grades/create" method="POST">
+  <div class="form-group">
+    <label id="name">
+      <span>Name:</span>
+      <input class="form-control" type="text" name="name" required />
+    </label>
+  </div>
+
+  <div class="form-group">
+    <label id="grade">
+      <span>Grade:</span>
+      <input
+        class="form-control"
+        type="range"
+        min="-1"
+        max="2"
+        step="1"
+        value="0"
+        name="grade"
+        id="inGrade"
+        required
+      />
+      <output for="inGrade"></output>
+    </label>
+  </div>
+
+  <div class="form-group">
+    <button class="btn btn-primary" type="submit">Create</button>
+  </div>
+</form>
+
+<script> const machete = "upssss"; </script>
+<script src="./javascripts/gradesForm.js"></script>
